@@ -1,0 +1,20 @@
+
+<br>
+<br>
+<h1>removing-duplicate </h1>
+<button ><a routerLink="/" routerLinkActive="active">back</a></button>
+<br>
+<br>
+<div>
+    <section>
+        <div class="example-button-row">
+          <button mat-button color="accent" (click)="onclick()">remove duplicate users</button>
+        </div>
+        
+      </section>
+      <div class="option1" *ngFor="let user of u1">
+        <p>name:
+            {{user.name}} .....   id: {{user.id}}
+        </p>
+    </div>
+</div>

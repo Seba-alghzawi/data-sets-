@@ -1,0 +1,31 @@
+
+<br>
+<br>
+<h1>removing-subset </h1>
+<button ><a routerLink="/" routerLinkActive="active">back</a></button>
+<br>
+<br>
+<div>
+    <section>
+        <div class="example-button-row">
+          <button mat-button color="accent" (click)="onclick()">remove subset of users</button>
+        </div>
+      </section>
+      
+</div>
+<div class="option1" *ngFor="let user of users">
+        <p>name:
+            {{user.name}} .....   id: {{user.id}}
+        </p>
+</div>
+<div> subset array to remove 
+    <div class="option2" *ngFor="let user of subSet">
+        <p>name:
+            {{user.name}} .....   id: {{user.id}}
+        </p>
+    </div>
+</div>
+
+
+
+
