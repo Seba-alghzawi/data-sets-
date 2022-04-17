@@ -2,7 +2,7 @@
 <h1>roles </h1>
 <button ><a routerLink="/" routerLinkActive="active">back</a></button>
 <br>
-<div>
+<!-- <div>
 <mat-form-field appearance="fill"  [formGroup]="dynamicForm"  >
     <mat-label>select role</mat-label>
     <mat-select formControlName="role" class="form-control"  >
@@ -10,6 +10,36 @@
         {{rol.roleDescEn}}
       </mat-option>
     </mat-select>
-    
   </mat-form-field>
+  
+</div> -->
+<form [formGroup]="form" (submit)="submit(form.value)">
+<div>
+  <fieldset>
+    <legend>Personal Data:</legend>
+
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" name="first-name" placeholder="(required)" formControlName="firstName">
+    <br><br>
+
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" name="last-name" placeholder="(optional)" formControlName="lastName">
+    <br><br>
+    <ng-container formArrayName="contacts" *ngFor="let contact of contacts.controls; index as i">
+      <ng-container [formGroupName]="i">
+        <label for="phone">PhoneNo:</label>
+        <input type="tel" id="phone" name="phone" placeholder="XXX-XX-XXX" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" formControlName="number">
+  
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="address@domain.com" formControlName="email">
+  
+        <br><br>
+      </ng-container>
+    </ng-container>
+    <!-- <button class="btn-add" type="button" (click)="addContactField()">Add</button> -->
+  </fieldset>
+  
+  <button class="btn-submit" type="submit">Submit</button>
+  
 </div>
+</form>
