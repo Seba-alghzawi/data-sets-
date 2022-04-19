@@ -12,13 +12,27 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill" >
+    <!-- <mat-form-field appearance="fill" >
       <mat-label>select role</mat-label>
       <mat-select  formControlName="role" class="form-control" (selectionChange)="onChange($event)">
         <mat-option  *ngFor="let item of childes" [value]="item"  >
           {{item.roleDescEn}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
+    <div *ngFor="let rol of roleFormGroups  let i = index">
+      
+        <mat-form-field appearance="fill" >
+          <mat-label>select role</mat-label>
+          <mat-select  [formGroup]="rol"  formControlName="role" class="form-control" (selectionChange)="onChange($event)">
+           <!-- <p>{{rol}}</p> -->
+            <mat-option *ngFor="let item of childarray[i]" [value]="item"  >
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+ 
+     
+    </div>
  </form>
 </div  >
