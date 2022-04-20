@@ -6,12 +6,13 @@
   <form  [formGroup]="dynamicForm">
   <mat-form-field appearance="fill" >
       <mat-label>select role</mat-label>
-      <mat-select  formControlName="role" class="form-control" (selectionChange)="onChange($event)">
+      <mat-select  formControlName="role" class="form-control" (selectionChange)="onChange1($event)">
         <mat-option *ngFor="let rol of receivedRoles" [value]="rol"  >
           {{rol.roleDescEn}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    
     <!-- <mat-form-field appearance="fill" >
       <mat-label>select role</mat-label>
       <mat-select  formControlName="role" class="form-control" (selectionChange)="onChange($event)">
@@ -21,18 +22,14 @@
       </mat-select>
     </mat-form-field> -->
     <div *ngFor="let rol of roleFormGroups  let i = index">
-      
         <mat-form-field appearance="fill" >
           <mat-label>select role</mat-label>
-          <mat-select  [formGroup]="rol"  formControlName="role" class="form-control" (selectionChange)="onChange($event)">
-           <!-- <p>{{rol}}</p> -->
-            <mat-option *ngFor="let item of childarray[i]" [value]="item"  >
-              {{item}}
+          <mat-select  [formGroup]="rol"  formControlName="role" class="form-control" (selectionChange)="onChange2($event,i)">
+            <mat-option *ngFor="let item of childarray[i]" [value]="item">
+              {{item.roleDescEn}}
             </mat-option>
           </mat-select>
         </mat-form-field>
- 
-     
     </div>
  </form>
-</div  >
+</div>
