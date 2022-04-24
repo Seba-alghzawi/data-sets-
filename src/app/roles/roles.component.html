@@ -6,7 +6,7 @@
   <form  [formGroup]="dynamicForm">
   <mat-form-field appearance="fill" >
       <mat-label>select role</mat-label>
-      <mat-select  formControlName="role" class="form-control" (selectionChange)="onChange1($event)">
+      <mat-select  formControlName="role" class="form-control" (selectionChange)="onChange1($event.value)">
         <mat-option *ngFor="let rol of receivedRoles" [value]="rol"  >
           {{rol.roleDescEn}}
         </mat-option>
@@ -24,7 +24,7 @@
     <div *ngFor="let rol of roleFormGroups  let i = index">
         <mat-form-field appearance="fill" >
           <mat-label>select role</mat-label>
-          <mat-select  [formGroup]="rol"  formControlName="role" class="form-control" (selectionChange)="onChange2($event,i)">
+          <mat-select  [formGroup]="rol"  formControlName="role" class="form-control" (selectionChange)="onChange2($event.value,i)">
             <mat-option *ngFor="let item of childarray[i]" [value]="item">
               {{item.roleDescEn}}
             </mat-option>
@@ -32,4 +32,21 @@
         </mat-form-field>
     </div>
  </form>
+</div>
+
+<div>
+  <hr>
+  <button (click)="flat(receivedRoles)">click here to flat data</button>
+  <mat-form-field appearance="fill">
+    <mat-label>childes</mat-label>
+    <mat-select [formControl]="toppings" multiple>
+      <mat-select-trigger >
+        {{toppings.value ? toppings.value[0] : ''}}
+        <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+          (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger >
+      <mat-option *ngFor="let child of ff" [value]="child">{{child.roleDescEn}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

@@ -24,6 +24,9 @@ export class RolesComponent implements OnInit {
     surveyID: number
   }>[] = [];
   selected: boolean = false;
+  flatarr:any[]=[];
+  ff:any[]=[];
+  toppings = new FormControl();
   constructor(private rol: ServiceDataService, private formBuilder: FormBuilder) {
     this.dynamicForm = this.formBuilder.group({})
   }
@@ -48,12 +51,12 @@ export class RolesComponent implements OnInit {
 
 
   onChange1(e: any) {
-    this.childes = e.value.children;
+    this.childes = e.children;
     this.childarray.push(this.childes);
+    console.log( e);
     console.log(this.childarray);
-    console.log(this.childes);
     this.t.push(this.formBuilder.group({
-        subchild: (this.childes)
+        subchild: this.childes
       }));
     
     console.log(this.dynamicForm.value)
@@ -61,16 +64,54 @@ export class RolesComponent implements OnInit {
 
   }
   onChange2(e: any,index:number) {
-    
-    this.childes = e.value.children;
-    this.childarray.push(this.childes);
-    console.log(this.childarray);
-    console.log(this.childes);
+
+    this.childes = e.children;
     this.t.push(this.formBuilder.group({
-        subchild: (this.childes)
-    }));
-    //  this.childarray.splice(index);
-    console.log(this.dynamicForm.value)
+          subchild: (e)
+      }));
+      if(index)
+      {
+        this.t.removeAt(index+1);
+      }
+      else{
+        this.childarray.push(this.childes);
+      }
+      console.log(this.childarray);
+      console.log(this.childes);
+      console.log(this.dynamicForm.value)
+    // this.childes = e.children;
+    // this.childarray.push(this.childes);
+    // console.log(this.childarray);
+    // console.log(this.childes);
+    // this.t.push(this.formBuilder.group({
+    //     subchild: (this.childes)
+    // }));
+    //    this.childarray.splice(index+1,this.childarray.length);
+    // console.log(this.dynamicForm.value)
+
+  }
+
+
+  flat(xroles:any)
+  {
+        
+        xroles.forEach((element)=> {
+          
+          if((element.children.length)==0)
+          {
+            return [];
+          }
+          else
+          {
+            
+            this.flatarr.push(element.children)
+            return this.flatarr.concat(this.flat(element.children))
+           
+          }
+        });
+         console.log(this.flatarr);//flatarr contain array of children to each level need another flat
+         this.ff=this.flatarr.flat();//flat nested arrays
+        console.log(this.ff);
   }
 
 
