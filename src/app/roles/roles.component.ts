@@ -27,6 +27,7 @@ export class RolesComponent implements OnInit {
   flatarr:any[]=[];
   ff:any[]=[];
   toppings = new FormControl();
+  filtered:string="";
   constructor(private rol: ServiceDataService, private formBuilder: FormBuilder) {
     this.dynamicForm = this.formBuilder.group({})
   }

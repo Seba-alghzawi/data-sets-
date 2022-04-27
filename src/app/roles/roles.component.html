@@ -46,7 +46,8 @@
           (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
         </span>
       </mat-select-trigger >
-      <mat-option *ngFor="let child of ff" [value]="child">{{child.roleDescEn}}</mat-option>
+      <input type="text" class="form-control" [(ngModel)]="filtered"/>
+      <mat-option *ngFor="let child of ff | filter:filtered " [value]="child">{{child.roleDescEn}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

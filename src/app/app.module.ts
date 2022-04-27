@@ -13,6 +13,9 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RolesComponent } from './roles/roles.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
     GroupingDataComponent,
     HeaderComponent,
     RolesComponent,
+    FilterPipe,
 
   ],
   imports: [
@@ -31,7 +35,9 @@ import {MatSelectModule} from '@angular/material/select';
      MatButtonModule,
      HttpClientModule,
      ReactiveFormsModule,
-     MatSelectModule
+     MatSelectModule,
+     NgxMatSelectSearchModule,
+     FormsModule
 
   ],
   providers: [],
